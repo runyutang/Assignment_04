@@ -1,5 +1,5 @@
 function setup() {
-  createCanvas(500,500);
+  createCanvas(windowWidth,windowHeight);
   angleMode(DEGREES);
  
 }
@@ -18,10 +18,16 @@ function draw() {
   mpara = minute()*6;
   spara = second()*6
   
+  var diameter = 0;
+  if(width > height){
+    diameter = height;
+    } else {
+      diameter = width;
+    }
   //console.log(hpara);
-  clockHand(hpara,200,10,'#649DAD');
-  clockHand(mpara,300,6,'#66C6BA');
-  clockHand(spara,400,4,'#C8F4DE');
+  clockHand(hpara,diameter*0.4,diameter/50,'#649DAD');
+  clockHand(mpara,diameter*0.6,diameter/80,'#66C6BA');
+  clockHand(spara,diameter*0.8,diameter/125,'#C8F4DE');
   //noFill();
   //ellipse(0,0,400,400);
 }
@@ -35,3 +41,7 @@ function clockHand(para,size,weight,color){
   stroke(220,220,220,50);
   ellipse(0,0,size,size);
   }
+  
+function windowResized(){
+  resizeCanvas(windowWidth,windowHeight);
+}
